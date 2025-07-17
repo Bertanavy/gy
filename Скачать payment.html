@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Оплата USDT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9fb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .network-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .network-button {
+      padding: 10px 20px;
+      border: none;
+      background: #e4e6ef;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .network-button.active {
+      background: #6366f1;
+      color: white;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      width: 300px;
+      text-align: center;
+    }
+    .label {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #666;
+    }
+    .wallet {
+      font-weight: bold;
+      word-break: break-all;
+      font-size: 14px;
+      background: #f4f5fa;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .qr {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="logo.png" alt="LunaAutoBot Logo">
+  <div class="title">Оплата USDT</div>
+  <div class="network-buttons">
+    <button class="network-button active" onclick="switchNetwork('ton')">TON</button>
+    <button class="network-button" onclick="switchNetwork('trc')">TRC20</button>
+  </div>
+
+  <div id="ton" class="card">
+    <div class="label">Адрес TON:</div>
+    <div class="wallet">UQAKZFAIa8HSt-JJlRPx7xXSHl5QXJittQfPqn9oJRhFscHS</div>
+    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=UQAKZFAIa8HSt-JJlRPx7xXSHl5QXJittQfPqn9oJRhFscHS" alt="QR TON">
+  </div>
+
+  <div id="trc" class="card hidden">
+    <div class="label">Адрес TRC20:</div>
+    <div class="wallet">TFPqPoRnh2pYAiJ5zTY1iS3XKivokfcm35</div>
+    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=TFPqPoRnh2pYAiJ5zTY1iS3XKivokfcm35" alt="QR TRC20">
+  </div>
+
+  <script>
+    function switchNetwork(net) {
+      document.querySelectorAll('.network-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.card').forEach(card => card.classList.add('hidden'));
+      if (net === 'ton') {
+        document.querySelector('.network-button:nth-child(1)').classList.add('active');
+        document.getElementById('ton').classList.remove('hidden');
+      } else {
+        document.querySelector('.network-button:nth-child(2)').classList.add('active');
+        document.getElementById('trc').classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
