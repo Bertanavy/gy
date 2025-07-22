@@ -3,7 +3,7 @@ import requests
 import json
 
 BOT_TOKEN = "7648772445:AAFQxEulPCcMeslH7BkNjmjKXlwmmraycfY"
-CHAT_ID = -1002226794027
+CHAT_ID = -1002720022273
 
 app = Flask("Webhook")
 
